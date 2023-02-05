@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         /**
-         * Leave only role, user, cateogry and writer uncommented in production
+         * Leave only role, user, cateogrisation and writer uncommented in production
          * Ordered by hierarchy of execution based on table relationship dependencies
          */
         $this->call([

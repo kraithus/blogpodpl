@@ -41,4 +41,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get User role
+     */
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
+
+    /**
+     * Get writers created by this user
+     */
+    public function writers()
+    {
+        return $this->hasMany(Writer::class);
+    }
+
+    /**
+     * Get podcasts created by this user
+     */
+    public function podcasts()
+    {
+        return $this->hasMany(Podcast::class);
+    }
+
+    /**
+     * Get categorisations created by this user
+     */
+    public function categorisations()
+    {
+        return $this->hasMany(Categorisation::class);
+    }
+    
+    /**
+     * Get articles uploaded by this user
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

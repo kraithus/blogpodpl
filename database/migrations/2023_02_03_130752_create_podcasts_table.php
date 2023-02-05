@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('host');
+            $table->string('click_bait');
+            $table->text('body');
             $table->string('image');
             $table->string('embed_link');
             $table->foreignId('created_by')->constrained('users');
