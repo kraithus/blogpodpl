@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             CategorisationSeeder::class,
             WriterSeeder::class,
             ArticleSeeder::class,
+            PodcastSeeder::class,
+            ArticleCommentSeeder::class,
+            PodcastCommentSeeder::class,
         ]);
     }
 }

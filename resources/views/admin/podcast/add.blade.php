@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Article</title>
+    <title>Post Podcast</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fa/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/la/css/line-awesome.min.css') }}">
@@ -93,13 +93,13 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard.html"><span class="la la-home"></span>
                                         Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Post Article</li>
+                                <li class="breadcrumb-item active" aria-current="page">Post Podcast</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-8">
                         <div class="box">
-                            <h4 class="block-title">Post Article <span class="la la-book"></span></h4>
+                            <h4 class="block-title">Post Podcast <span class="la la-book"></span></h4>
                             <div class="title-border"></div>
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -110,18 +110,26 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="/admin-article" method="POST" enctype="multipart/form-data" class="row">
+                            <form action="/admin-podcast" method="POST" enctype="multipart/form-data" class="row">
                                 @csrf
                                 <div class="col-md-12 mb-4">
-                                    <label class="mb-2" for="post_title">Post Title:</label>
+                                    <label class="mb-2" for="post_title">Podcast Title:</label>
                                     <input type="text" class="form-control dash_form" name="title" value="{{ old('title') }}" id="">
                                 </div>
                                 <div class="col-md-12 mb-4">
                                     <label class="mb-2" for="post_title">Click Bait:</label>
                                     <input type="text" class="form-control dash_form" name="click_bait" value="{{ old('click_bait') }}" id="">
                                 </div>
+                                <div>
+                                <label class="mb-2" for="post_title">Host:</label>
+                                    <input type="text" class="form-control dash_form" name="host" value="{{ old('host') }}" id="">
+                                </div>
                                 <div class="col-md-12 mb-4">
-                                    <label class="mb-2" for="body">Article Body:</label>
+                                    <label class="mb-2" for="post_title">Video ID</label>
+                                    <input type="text" class="form-control dash_form" name="video_id" value="{{ old('video_id') }}" id="">
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <label class="mb-2" for="body">Description:</label>
                                     <textarea name="body" value="{{ old('body') }}" class="form-control dash_text" id="" cols="30" rows="10"></textarea>
                                     <script>
                                         CKEDITOR.replace( 'body' );
@@ -135,22 +143,14 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-6 mb-4">
-                                    <select name="writer_id" class="form-select dash_select" aria-label="Author Select" required>
-                                        <option selected disabled>Author</option>
-                                        @foreach ($writers as $writer)
-                                            <option value="{{$writer->id}}" {{ old('writer') == $writer->id ? 'selected' : '' }}>{{$writer->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="col-md-12 mb-4">
                                     <label class="mb-2 d-block" for="image_upload">Image Upload:</label>
-                                    <input type="file" name="main_image" accept="image/png, image/jpg, image/jpeg" class="form-control" id="file-input" required>
+                                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" class="form-control" id="file-input" required>
                                     @if (old('main_image'))
-                                        <input type="hidden" name="file_path" value="{{ old('main_image') }}">
+                                        <input type="hidden" name="file_path" value="{{ old('image') }}">
                                     @endif
                                 </div>
-                                <button class="artup_btn" type="submit">Upload Article <span class="la la-upload"></span></button>
+                                <button class="artup_btn" type="submit">Upload Podcast <span class="la la-upload"></span></button>
                             </form>
                         </div>
                     </div>

@@ -22,9 +22,9 @@
         font-size: 20px;
     }
     .category-badge {
-        line-height: 30px;
+        line-height: 40px;
     }
-    .post-content img{
-        height: 400px;
+    .post_body img{
+        height: 300px;
     }
 }

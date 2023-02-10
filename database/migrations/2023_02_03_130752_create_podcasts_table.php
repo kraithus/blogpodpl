@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('slug');
             $table->string('host');
             $table->string('click_bait');
+            $table->string('categorisation_id')->constrained();
             $table->text('body');
             $table->string('image');
-            $table->string('embed_link');
+            $table->string('video_id');
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->constrained('users');
             $table->timestamps();

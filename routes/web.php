@@ -1,7 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminArticleController;
+use App\Http\Controllers\AdminPodcastController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicArticleController;
+use App\Http\Controllers\PublicPodcastController;
+use App\Models\Article;
+use App\Models\Podcast;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,18 +22,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * Default route
+ */
+Route::get('/', [HomeController::class, 'index']);
 
 /**
  * Routers that require user authentication
  */
 Route::middleware(['auth', 'verified'])->group(function () {
     /**
-     * Adminstration of resources
+     * The dashboard
+     */
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    /**
+     * Administration of resources
      */
     Route::resource('admin-article', AdminArticleController::class);
+    Route::resource('admin-podcast', AdminPodcastController::class);
 
     /**
      * Profile Management
@@ -36,8 +52,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 require __DIR__.'/auth.php';
+/**
+ * Fetch article or podcast by slug
+ */
+Route::get('/{slug}', function($slug) {
+    $article = Article::where('slug', $slug)->first();
+
+    if ($article) {
+        return (new PublicArticleController)->show($slug);
+    }
+
+    $podcast = Podcast::where('slug', $slug)->first();
+
+    if ($podcast) {
+        return (new PublicPodcastController)->show($slug);
+    }
+});
+
+

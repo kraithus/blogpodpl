@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Categorisation;
-use App\Models\Writer;
+use App\Models\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class AdminArticleController extends Controller
+class AdminPodcastController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,16 +25,14 @@ class AdminArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         $categorisations = Categorisation::all()->sortBy('name');
-        $writers = Writer::all()->sortBy('name');
 
         $data = [
             'categorisations' => $categorisations,
-            'writers' => $writers,
         ];
 
-        return view('admin.article.add', $data);
+        return view('admin.podcast.add', $data);
     }
 
     /**
@@ -48,20 +45,21 @@ class AdminArticleController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'host' => 'required|string|max:255',
             'click_bait' => 'required|string|max:255',
-            'body' => 'required|string',
-            'writer_id' => 'required|string',
             'categorisation_id' => 'required|string',
-            'main_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'body' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'video_id' => 'required|string'
         ]);
 
-        $mainImage = $request->file('main_image');
-        $mainImageName = Str::random(20) . '.' .$mainImage->getClientOriginalExtension();
-        $destinationPath = public_path('/uploads/articles');
-        $mainImage->move($destinationPath, $mainImageName);
+        $Image = $request->file('image');
+        $ImageName = Str::random(20) . '.' .$Image->getClientOriginalExtension();
+        $destinationPath = public_path('/uploads/podcasts');
+        $Image->move($destinationPath, $ImageName);
 
         // create instance
-        $img = \Image::make($destinationPath . '/' . $mainImageName);
+        $img = \Image::make($destinationPath . '/' . $ImageName);
         
         // resize the image to a width of 633 and constrain aspect ratio (auto height)
         $img->resize(633, null, function ($constraint) {
@@ -69,33 +67,34 @@ class AdminArticleController extends Controller
         });
 
         // name and save to path
-        $thumbnailName = 'thumbnail_' . $mainImageName;
+        $thumbnailName = 'thumbnail_' . $ImageName;
         $img->save($destinationPath . '/' . $thumbnailName);
 
         // Store the uploaded file path in the session
-        $request->session()->flash('main_image', $destinationPath . '/' . $mainImageName);
+        $request->session()->flash('image', $destinationPath . '/' . $ImageName);
         
         $title = $request->title;
         $slug = Str::slug($title);
         $userId = \Auth::id();
-        $article = new Article([
+        $podcast = new Podcast([
             'title' => $title,
             'slug' => $slug,
+            'host' => $request->host,
             'click_bait' => $request->click_bait,
-            'body' => $request->body,
-            'writer_id' => $request->writer_id,
             'categorisation_id' => $request->categorisation_id,
-            'main_image' => $mainImageName,
+            'body' => $request->body,
+            'image' => $ImageName,
+            'video_id' => $request->video_id
         ]);
 
         //Out here because not mass assignable...
-        $article->created_by = $userId;
-        $article->updated_by = $userId;
+        $podcast->created_by = $userId;
+        $podcast->updated_by = $userId;
 
 
-        $article->save();
+        $podcast->save();
 
-        return redirect()->route('dashboard')->with('message', 'Article published');
+        return redirect()->route('dashboard')->with('message', 'Podcast uploaded');
     }
 
     /**

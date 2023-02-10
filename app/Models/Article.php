@@ -29,7 +29,7 @@ class Article extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     /**
@@ -46,5 +46,27 @@ class Article extends Model
     public function categorisation()
     {
         return $this->belongsTo(Categorisation::class);
+    }
+
+    /**
+     * Article has many comments
+     */
+    public function comments()
+    {
+        return $this->hasMany(ArticleComment::class);
+    }
+
+    /**
+     * Scope a query to get 3 most recent articles with the same
+     * category as the article being viewed
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder  $query
+     * @param string $slug
+     * @param int $categorisation_id
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSimilarArticles($query, $slug, $categorisation_id)
+    {
+        return $query->latest()->where('categorisation_id', $categorisation_id)->whereNot('slug', $slug)->limit(3);
     }
 }
