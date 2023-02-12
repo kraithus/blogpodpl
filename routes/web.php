@@ -7,8 +7,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicArticleController;
 use App\Http\Controllers\PublicPodcastController;
+use App\Http\Livewire\CategorisationHandler;
 use App\Models\Article;
+use App\Models\Categorisation;
 use App\Models\Podcast;
+use App\Services\ArticleCategorisationService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,7 +57,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 require __DIR__.'/auth.php';
 /**
- * Fetch article or podcast by slug
+ * Fetch article or podcast or category by slug
  */
 Route::get('/{slug}', function($slug) {
     $article = Article::where('slug', $slug)->first();
@@ -67,6 +70,15 @@ Route::get('/{slug}', function($slug) {
 
     if ($podcast) {
         return (new PublicPodcastController)->show($slug);
+    }
+
+    $categorisation = Categorisation::where('slug', $slug)->firstOrFail();
+
+    if($categorisation) {
+        return view('public.categorisation.show', [
+            'categorisation' => $categorisation,
+            'slug' => $slug
+        ]);
     }
 });
 

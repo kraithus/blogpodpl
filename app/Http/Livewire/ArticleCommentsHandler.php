@@ -22,7 +22,6 @@ class ArticleCommentsHandler extends Component
 
     public function mount()
     {   
-        $this->newComment;
         if ($this->comments_count > $this->take)
         {
             $this->loadMoreStatus = TRUE;
@@ -51,6 +50,14 @@ class ArticleCommentsHandler extends Component
         // Fetch the added comment
         $this->userComment = ArticleComment::find($this->articleCommentSave->id);
 
+        // update comment count
+        $this->comments_count = ArticleComment::where('article_id', $this->article->id)->count();
+
+        // if this is the first comment on the post then update value of object comments
+        if ($this->comments_count === 1)
+        {
+            $this->comments = ArticleComment::where('article_id', $this->article->id)->get();
+        }
     }
     
     public function loadMore()

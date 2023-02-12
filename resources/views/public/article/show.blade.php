@@ -122,15 +122,9 @@
                             </article>  
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="box">
-                        <h4 class="block-title">Comments <span class="la la-comments"></span></h4>
-                            <div class="title-border"></div>
-                            <!-- comments handler -->
-                            <livewire:article-comments-handler :article="$article" :comments_count="$article->comments_count" />
-                            <!-- end comments handler -->     
-                        </div>
-                    </div>
+                    <!-- comments handler -->
+                    <livewire:article-comments-handler :article="$article" :comments_count="$article->comments_count" />
+                    <!-- end comments handler -->     
                 </div>
             </div>
             <div class="col-md-4">

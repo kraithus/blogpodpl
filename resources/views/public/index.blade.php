@@ -96,7 +96,7 @@
                         <figure class="item-content">
                             <a href="/{{ $article->slug }}"><img class="img-fluid" src="{{ asset('uploads/articles') . '/' . $article->main_image }}" alt="Article Image"></a>
                             <figcaption class="item-caption" data-aos="fade-left">
-                                <a class="category-badge" href="category.html">{{ $article->categorisation->name }}</a>
+                                <a class="category-badge" href="/{{$article->categorisation->slug}}">{{ $article->categorisation->name }}</a>
                                 <h4><a href="/{{ $article->slug }}">{{ $article->title }}</a></h4>
                                 <ul class="intro-list">
                                     <li><a href=""><span class="la la-user"></span>{{ $article->writer->name }}</a></li>
@@ -149,7 +149,7 @@
                                     <figure class="block-post">
                                         <a href="/{{ $article->slug }}"><img src="{{ asset('uploads/articles') . '/' . 'thumbnail_' . $article->main_image }}" class="img-fluid" alt="Article Thumbnail"></a>
                                         <figcaption>
-                                            <a class="category-badge" href="category.html">{{ $article->categorisation->name }}</a>
+                                            <a class="category-badge" href="{{ $article->categorisation->slug }}">{{ $article->categorisation->name }}</a>
                                             <h4><a href="/{{ $article->slug }}">{{ $article->title }}</a></h4>
                                             <p>{{ $article->click_bait }}</p>
                                             <ul class="blockPost_meta">
