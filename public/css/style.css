@@ -314,17 +314,13 @@ ul.intro-list {
 .intro-list .la {
     margin-right: 10px;
 }
-
-.pod_vid{
-    width: 100%;
-    height: 250;
-    border-radius: 3px;
-}
-
-.pod_vid{
+.home_pod{
     width: 100%;
     height: 250px;
     border-radius: 3px;
+    object-fit: cover;
+    margin-bottom: 0px;
+    filter: brightness(80%);
     margin-bottom: 20px;
 }
 .pod_post{
@@ -389,7 +385,7 @@ ul.blockPost_meta {
 
 .blockPost_meta li {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .blockPost_meta li a {
@@ -438,7 +434,7 @@ ul.smallpost_meta {
 
 .smallpost_meta li {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .smallpost_meta li a {

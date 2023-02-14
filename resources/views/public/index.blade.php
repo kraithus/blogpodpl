@@ -117,12 +117,12 @@
                 <div class="row">
                     <div class="col-md-12" data-oas="fade-up">
                         <div class="box" data-oas="fade-up">
-                            <h4 class="block-title">Podcasts <span class="la la-microphone-alt"></span></h4>
+                            <h4 class="block-title">Podcasts <span class="la la-microphone"></span></h4>
                             <div class="title-border"></div>
                             <div class="row">
                                 @foreach ($latestPodcasts as $podcast)
                                 <div class="col-md-6">
-                                <a href="/{{ $podcast->slug }}"><img src="{{ asset('uploads/podcasts') . '/' . 'thumbnail_' . $podcast->image }}" class="img-fluid" alt="Podcast Thumbnail"></a>
+                                <a href="/{{ $podcast->slug }}"><img src="{{ asset('uploads/podcasts') . '/' . 'thumbnail_' . $podcast->image }}" class="img-fluid home_pod" alt="Podcast Thumbnail"></a>
                                     <div class="pod_post">
                                         <a class="category-badge" href="category.html">{{ $podcast->categorisation->name }}</a>
                                         <h4><a href="/{{ $podcast->slug }}">{{ $podcast->title }}</a></h4>
