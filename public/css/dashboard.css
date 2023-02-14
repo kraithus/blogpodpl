@@ -105,9 +105,11 @@ body {
     min-height: 80px;
     background-color: #3D3D3D !important;
 }
-.la-bars{
+
+.la-bars {
     color: #FFFFFF;
 }
+
 .navbar-brand {
     padding-top: .75rem;
     padding-bottom: .75rem;
@@ -126,6 +128,51 @@ body {
     padding: .75rem 1rem;
 }
 
+.breadcrumb {
+    margin-bottom: 30px;
+    box-shadow: #32325d40 0px 30px 60px -12px, #0000004d 0px 18px 36px -18px;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #DAAC69;
+    font-weight: 600;
+}
+
+.alert {
+    margin-bottom: 30px;
+    box-shadow: #32325d40 0px 30px 60px -12px, #0000004d 0px 18px 36px -18px;
+}
+
+.seg {
+    display: flex;
+    align-items: flex-start;
+}
+
+.seg-button {
+    margin-right: 30px;
+    background-color: #3D3D3D;
+    border: #3D3D3D;
+    color: #FFFFFF;
+    height: 100px;
+    width: 100px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    font-size: 35px;
+}
+
+.seg-heading {
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.seg-body p a{
+    text-decoration: none;
+    color: #000;
+}
+.seg-body p a:hover{
+    color: #DAAC69;
+}
 .dash_form {
     position: relative;
     z-index: 100;
@@ -146,7 +193,8 @@ body {
     box-shadow: none;
     color: #000;
 }
-textarea.dash_text{
+
+textarea.dash_text {
     position: relative;
     background-color: #EBF1F8;
     font-size: 14px;
@@ -158,12 +206,14 @@ textarea.dash_text{
     -o-transition-duration: 500ms;
     transition-duration: 500ms;
 }
-textarea.dash_text:focus{
+
+textarea.dash_text:focus {
     color: #000;
     background-color: #EBF1F8;
     box-shadow: none;
 }
-.dash_select{
+
+.dash_select {
     position: relative;
     background-color: #EBF1F8;
     font-size: 14px;
@@ -174,16 +224,19 @@ textarea.dash_text:focus{
     -o-transition-duration: 500ms;
     transition-duration: 500ms;
 }
-.dash_select{
+
+.dash_select {
     background-color: #EBF1F8;
     box-shadow: none;
 }
-selected.dash_select{
+
+selected.dash_select {
     font-size: 14px;
     color: #000;
 }
-.artpic_upload{
-}
+
+.artpic_upload {}
+
 .artup_btn {
     margin-bottom: 30px;
     color: white;
