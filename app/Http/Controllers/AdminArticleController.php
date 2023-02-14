@@ -17,7 +17,7 @@ class AdminArticleController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.article.index');
     }
 
     /**
@@ -68,7 +68,7 @@ class AdminArticleController extends Controller
             $constraint->aspectRatio();
         });
 
-        // name and save to path
+        // thumbnail name and save to path
         $thumbnailName = 'thumbnail_' . $mainImageName;
         $img->save($destinationPath . '/' . $thumbnailName);
 
@@ -117,7 +117,23 @@ class AdminArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Get article and other models
+        $article = Article::find($id);
+        $categorisations = Categorisation::all()->sortBy('name');
+        $writers = Writer::all()->sortBy('name');
+
+        $pageTitle = 'Update Article'; // Title for the page
+
+
+        // Pass data for the view to array
+        $data = [
+            'article' => $article,
+            'categorisations' => $categorisations,
+            'title' => $pageTitle, 
+            'writers' => $writers,
+        ];
+
+        return view('admin.article.edit', $data);
     }
 
     /**
@@ -129,7 +145,24 @@ class AdminArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'click_bait' => 'required|string|max:255',
+            'body' => 'required|string',
+            'writer_id' => 'required|string',
+            'categorisation_id' => 'required|string',
+        ]);
+
+        $article->title = $request->title;
+        $article->click_bait = $request->click_bait;
+        $article->body = $request->body;
+        $article->writer_id = $request->writer_id;
+        $article->categorisation_id = $request->categorisation_id;
+
+        $article->save();
+        return redirect()->route('dashboard')->with('message', 'Article Updated');
     }
 
     /**

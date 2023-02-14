@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Manage Articles</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fa/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/la/css/line-awesome.min.css') }}">
@@ -14,14 +14,15 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/device.css') }}">
+    @livewireStyles
 </head>
 
 <body>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name | {{ Auth::user()->name }}</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed ml-5" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed ml-5" type="button"
+            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="la la-bars"></span>
         </button>
@@ -30,13 +31,14 @@
             </div>
         </div>
     </header>
+
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="dashboard.html">
+                            <a class="nav-link" aria-current="page" href="/dashboard">
                                 Dashboard
                             </a>
                         </li>
@@ -66,7 +68,7 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin-article">
+                            <a class="nav-link active" href="/admin-article">
                                 Uploaded Articles
                             </a>
                         </li>
@@ -83,21 +85,27 @@
                     </ul>
                 </div>
             </nav>
-
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="row">
-                    @if(session()->has('message'))
+                    <div class="col-md-12 mt-5">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><span class="la la-home"></span> Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Manage</li>
+                            </ol>
+                        </nav>
+                    </div>
                     <div class="col-md-12">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session()->get('message') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="box">
+                            <h4 class="block-title">Manage Articles</h4>
+                            <div class="title-border"></div>
+                            <ul class="manage_post_list mt-auto">
+                                <livewire:article-listable />
+                            </ul>
                         </div>
                     </div>
-                    @endif    
                 </div>
             </main>
-        </div>
-    </div>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -111,6 +119,7 @@
         });
     </script>
     <script src="{{ asset('js/dash.js') }}"></script>
+    @livewireScripts
 </body>
 
-</html>
+</html>            

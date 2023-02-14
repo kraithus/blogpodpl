@@ -166,13 +166,16 @@ body {
     margin-top: 0;
     margin-bottom: 20px;
 }
-.seg-body p a{
+
+.seg-body p a {
     text-decoration: none;
     color: #000;
 }
-.seg-body p a:hover{
+
+.seg-body p a:hover {
     color: #DAAC69;
 }
+
 .dash_form {
     position: relative;
     z-index: 100;
@@ -244,5 +247,66 @@ selected.dash_select {
     border: #DAAC69;
     height: 40px;
     width: 100%;
+    border-radius: 3px;
+}
+
+.manage_post {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 60px;
+}
+
+.manage_post_image {
+    margin-right: 30px;
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.manage_post_heading {
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.manage_post_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.manage_post_buttons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.manage_post_buttons li {
+    margin-right: 10px;
+    
+
+}
+
+.manage_post_button_left {
+    margin-right: 10px;
+    background-color: #008080;
+    border: #008080;
+    color: #FFFFFF;
+    padding: 0px 20px;
+    line-height: 30px;
+    border-radius: 3px;
+}
+
+.manage_post_button_right {
+    margin-left: 10px;
+    background-color: #FF0000;
+    border: #FF0000;
+    color: #FFFFFF;
+    padding: 0px 20px;
+    line-height: 30px;
     border-radius: 3px;
 }

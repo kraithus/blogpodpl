@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Article</title>
+    <title>{{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fa/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/la/css/line-awesome.min.css') }}">
@@ -91,15 +91,15 @@
                     <div class="col-md-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="dashboard.html"><span class="la la-home"></span>
+                                <li class="breadcrumb-item"><a href="/dashboard"><span class="la la-home"></span>
                                         Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Post Article</li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Article</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-8">
                         <div class="box">
-                            <h4 class="block-title">Post Article <span class="la la-book"></span></h4>
+                            <h4 class="block-title">Edit Article <span class="la la-book"></span></h4>
                             <div class="title-border"></div>
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -110,50 +110,44 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="/admin-article" method="POST" enctype="multipart/form-data" class="row">
+                            <form action="/admin-article/{{ $article->id }}" method="POST" class="row">
                                 @csrf
+                                @method('PUT')
                                 <div class="col-md-12 mb-4">
                                     <label class="mb-2" for="post_title">Post Title:</label>
-                                    <input type="text" class="form-control dash_form" name="title" value="{{ old('title') }}" id="">
+                                    <input type="text" class="form-control dash_form" name="title" value="{{ $article->title }}">
                                 </div>
                                 <div class="col-md-12 mb-4">
                                     <label class="mb-2" for="post_title">Click Bait:</label>
-                                    <input type="text" class="form-control dash_form" name="click_bait" value="{{ old('click_bait') }}" id="">
+                                    <input type="text" class="form-control dash_form" name="click_bait" value="{{ $article->click_bait }}" id="">
                                 </div>
                                 <div class="col-md-12 mb-4">
                                     <label class="mb-2" for="body">Article Body:</label>
-                                    <textarea name="body" value="{{ old('body') }}" class="form-control dash_text" id="" cols="30" rows="10"></textarea>
+                                    <textarea name="body" class="form-control dash_text" id="" cols="30" rows="10">{!! $article->body !!}</textarea>
                                     <script>
-                                        CKEDITOR.replace( 'body', {
+                                            CKEDITOR.replace( 'body', {
                                             filebrowserUploadUrl: "{{ route('ckeditor.image-upload', ['_token' => csrf_token() ]) }}",
                                             filebrowserUploadMethod: 'form'
-                                        });
+                                            });
                                     </script>    
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <select name="categorisation_id" class="form-select dash_select" aria-label="Category Select" required>
-                                        <option selected disabled>Category</option>
+                                        <option value="{{ $article->categorisation_id }}">{{ $article->categorisation->name }}</option>
                                         @foreach ($categorisations as $categorisation)
-                                        <option value="{{ $categorisation->id }}" {{ old('categorisation_id') == $categorisation->id ? 'selected' : '' }}>{{ $categorisation->name }}</option>
+                                            <option value="{{ $categorisation->id }}" }}>{{ $categorisation->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <select name="writer_id" class="form-select dash_select" aria-label="Author Select" required>
-                                        <option selected disabled>Author</option>
+                                        <option value="{{ $article->writer_id }}">{{ $article->writer->name }}</option>
                                         @foreach ($writers as $writer)
-                                            <option value="{{ $writer->id }}" {{ old('writer_id') == $writer->id ? 'selected' : '' }}>{{ $writer->name }}</option>
+                                            <option value="{{ $writer->id }}">{{ $writer->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-12 mb-4">
-                                    <label class="mb-2 d-block" for="image_upload">Image Upload:</label>
-                                    <input type="file" name="main_image" accept="image/png, image/jpg, image/jpeg" class="form-control" id="file-input" required>
-                                    @if (old('main_image'))
-                                        <input type="hidden" name="main_image" value="{{ old('main_image') }}">
-                                    @endif
-                                </div>
-                                <button class="artup_btn" type="submit">Upload Article <span class="la la-upload"></span></button>
+                                <button class="artup_btn" type="submit">Save <span class="la la-upload"></span></button>
                             </form>
                         </div>
                     </div>

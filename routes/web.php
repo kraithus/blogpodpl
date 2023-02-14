@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminArticleController;
 use App\Http\Controllers\AdminPodcastController;
+use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -41,6 +42,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
+    /**
+     * CKEditor Image Upload
+     */
+    Route::post('/ckeditor/uploadImage', [CkeditorController::class, 'uploadImage'])->name('ckeditor.image-upload');
+    
     /**
      * Administration of resources
      */
