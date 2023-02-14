@@ -105,7 +105,7 @@
                             </nav>
                             <article>
                                 <figure class="post_body">
-                                <iframe class="pod_vid" src="{{ 'https://www.youtube.com/embed' . '/' . $podcast->video_id }}" title="YouTube video player" frameborder="0"></iframe>
+                                <iframe class="pod_frame" src="{{ 'https://www.youtube.com/embed' . '/' . $podcast->video_id }}" title="YouTube video player" frameborder="0"></iframe>
                                     <figcaption class="post_head">
                                         <h4>{{ $podcast->title }}</h4>
                                     </figcaption>
