@@ -145,7 +145,7 @@
                             <div class="title-border"></div>
                             <div class="row">
                                 @foreach ($nextLatestArticles as $article)
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <figure class="block-post">
                                         <a href="/{{ $article->slug }}"><img src="{{ asset('uploads/articles') . '/' . 'thumbnail_' . $article->main_image }}" class="img-fluid" alt="Article Thumbnail"></a>
                                         <figcaption>
