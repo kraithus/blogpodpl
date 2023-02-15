@@ -26,8 +26,12 @@ class PublicPodcastController extends Controller
      */
     public function show($slug)
     {
-        $podcast = Podcast::where('slug', $slug)->firstOrFail();
+        $podcast = Podcast::where('slug', $slug)->withCount('comments')->firstOrFail();
+        
+        $data = [
+            'podcast' => $podcast
+        ];
 
-        return view('public.podcast.show', compact('podcast'));
+        return view('public.podcast.show', $data);
     }
 }

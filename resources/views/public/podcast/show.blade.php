@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/device.css') }}">
+    @livewireStyles
     <title>{{ $podcast->title }}</title>
 </head>    
 
@@ -120,11 +121,9 @@
                             </article>  
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="box">
-                            
-                        </div>
-                    </div>
+                    <!-- podcast comments handler -->
+                    <livewire:podcast-comments-handler :podcast="$podcast" :comments_count="$podcast->comments_count" />
+                    <!-- end podcast comments handler -->                    
                 </div>
             </div>
             <div class="col-md-4">
@@ -200,6 +199,7 @@
         easing: 'ease-in-out-sine'
     });
     </script>
+    @livewireScripts
 </body>
 
 </html>

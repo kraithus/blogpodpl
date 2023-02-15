@@ -16,8 +16,9 @@ class PodcastComment extends Model
      */
 
     protected $fillable = [
-        'name',
-        'comment'
+        'podcast_id',
+        'author',
+        'body'
     ];
 
     /**

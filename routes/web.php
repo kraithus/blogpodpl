@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminArticleController;
 use App\Http\Controllers\AdminPodcastController;
 use App\Http\Controllers\CkeditorController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicArticleController;
