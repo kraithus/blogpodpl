@@ -95,15 +95,7 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-12">
-                        <div class="box">
-                            <h4 class="block-title">Manage Articles</h4>
-                            <div class="title-border"></div>
-                            <ul class="manage_post_list mt-auto">
-                                <livewire:article-listable />
-                            </ul>
-                        </div>
-                    </div>
+                    <livewire:article-search :dateFrom="2023-01-01" :dateTo="now()" />
                 </div>
             </main>
 
