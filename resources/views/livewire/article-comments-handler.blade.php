@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <div class="box">
-    <h4 class="block-title">Comments <span class="la la-comments"></span> {{ $comments_count }}</h4>
+    <h4 class="block-title">Comments {{ $comments_count }} <span class="la la-comments"></span></h4>
     <div class="title-border"></div>
         @if ($comments_count > 0)
         @foreach ($comments as $comment)

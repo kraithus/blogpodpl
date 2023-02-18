@@ -55,12 +55,13 @@
                         <a class="nav-link" href="#">Link</a>
                     </li>
                 </ul>
-                <div class="">
-                    <form class="nav_form">
-                        <input class="nav_input" type="search" placeholder="Search Me">
-                        <button class="nav_btn" type="submit">Search</button>
+                <div>
+                    <form class="navigation_form">
+                        <input class="navigation_input" type="search" placeholder="Search...">
+                        <button class="navigation_btn" type="submit">Search</button>
                     </form>
                 </div>
+                
             </div>
             
         </div>
@@ -90,7 +91,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12" style="margin: 0; padding: 0;">
-                <div class="owl-carousel owl-theme owl-intro data-aos=" fade-down"">
+                <div class="owl-carousel owl-theme owl-intro">
                     @foreach ($carouselArticles as $article)    
                     <div class="intro-item">
                         <figure class="item-content">
@@ -115,8 +116,8 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-12" data-oas="fade-up">
-                        <div class="box" data-oas="fade-up">
+                    <div class="col-md-12">
+                        <div class="box" data-aos="fade-up">
                             <h4 class="block-title">Podcasts <span class="la la-microphone"></span></h4>
                             <div class="title-border"></div>
                             <div class="row">
@@ -139,8 +140,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12" data-oas="fade-up">
-                        <div class="box" data-oas="fade-up">
+                    <div class="col-md-12">
+                        <div class="box" data-aos="fade-up">
                             <h4 class="block-title">Whats Happening<span class="la la-new"></span></h4>
                             <div class="title-border"></div>
                             <div class="row">
@@ -166,14 +167,14 @@
                         </div>
                     </div>
                     <div class="col-md-6" data-oas="fade-up">
-                        <div class="box" data-oas="fade-up">
-                            <h4 class="block-title">Discover <span class="la la-compass"></span></h4>
+                        <div class="box" data-aos="fade-up">
+                            <h4 class="block-title">Category</h4>
                             <div class="title-border"></div>
                         </div>
                     </div>
                     <div class="col-md-6" data-oas="fade-up">
-                        <div class="box">
-                            <h4 class="block-title">Genre <span class="la la-record-vinyl"></span></h4>
+                        <div class="box" data-aos="fade-up">
+                            <h4 class="block-title">Category</span></h4>
                             <div class="title-border"></div>
                         </div>
                     </div>
@@ -181,8 +182,8 @@
             </div>
             <div class="col-md-4">
                 <div class="row">
-                    <div class="col-md-12" data-oas="fade-up">
-                        <div class="box">
+                    <div class="col-md-12">
+                        <div class="box" data-aos="fade-up">
                             <h4 class="block-title">Weekly Chart <span class="la la-spotify"></span></h4>
                             <div class="title-border"></div>
                             <div>
@@ -197,8 +198,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12" data-oas="fade-up">
-                        <div class="box">
+                    <div class="col-md-12">
+                        <div class="box" data-aos="fade-up">
                             <h4 class="block-title">Archived Posts</h4>
                             <div class="title-border"></div>
                             <ul class="archive-list">
@@ -212,8 +213,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12" data-oas="fade-up">
-                        <div class="box">
+                    <div class="col-md-12">
+                        <div class="box" data-aos="fade-up">
                             <h4 class="block-title">Subscribe to Newsletters</h4>
                             <div class="title-border"></div>
                             <form action="">
@@ -229,8 +230,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12" data-oas="fade-up">
-                        <div class="box">
+                    <div class="col-md-12">
+                        <div class="box" data-aos="fade-up">
                             <h4 class="block-title">Get Connected</h4>
                             <div class="title-border"></div>
                             <ul class="social-list">
@@ -247,7 +248,7 @@
     </div>
 
 
-    <footer class="footer-section" data-oas="fade-up">
+    <footer class="footer-section">
         <div class="container">
             <div class="row">
                 <div class="col-3 company-block">

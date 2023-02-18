@@ -1,5 +1,6 @@
 <div class="box">
-    @foreach ($articles as $article)
+    <div class="row">
+        @foreach ($articles as $article)
         <div class="col-md-6">
             <figure class="block-post">
                 <a href="/{{ $article->slug }}"><img src="{{ asset('uploads/articles') . '/' . 'thumbnail_' . $article->main_image }}" class="img-fluid" alt=""></a>
@@ -17,4 +18,5 @@
         </div>
     @endforeach
     {{ $articles->links() }}
+    </div>
 </div>
