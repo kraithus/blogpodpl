@@ -9,8 +9,7 @@
                     <p>{{ $article->click_bait }}</p>
                     <ul class="blockPost_meta">
                         <li><a href=""><span class="la la-user"></span>{{ $article->writer->name }}</a></li>
-                        <li><a href=""><span class="la la-clock-o"></span>{{ $article->created_at->diffForHumans() }}</a>
-                        </li>
+                        <li><a href=""><span class="la la-clock-o"></span>{{ $article->created_at->diffForHumans() }}</a></li>
                         <li><a href=""><span class="la la-comments"></span> {{ $article->comments_count }}</a></li>
                     </ul>
                 </figcaption>
