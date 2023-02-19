@@ -24,6 +24,9 @@
     .category-badge {
         line-height: 40px;
     }
+    .home_pod{
+        height: 300px;
+    }
     .post_body img{
         height: 300px;
     }

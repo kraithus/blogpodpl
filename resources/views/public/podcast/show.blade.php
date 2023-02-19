@@ -56,10 +56,10 @@
                         <a class="nav-link" href="#">Link</a>
                     </li>
                 </ul>
-                <div class="">
-                    <form class="nav_form">
-                        <input class="nav_input" type="search" placeholder="Search Me">
-                        <button class="nav_btn" type="submit">Search</button>
+                <div>
+                    <form class="navigation_form">
+                        <input class="navigation_input" type="search" placeholder="Search...">
+                        <button class="navigation_btn" type="submit">Search</button>
                     </form>
                 </div>
             </div>

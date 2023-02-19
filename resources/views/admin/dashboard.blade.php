@@ -86,14 +86,63 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="row">
+                    <div class="col-md-12 mt-5">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><span class="la la-home"></span> Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Overview</li>
+                            </ol>
+                        </nav>
+                    </div>
+
                     @if(session()->has('message'))
                     <div class="col-md-12">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session()->get('message') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                     </div>
-                    @endif    
+                    @endif  
+                    
+                    <div class="col-md-4">
+                        <div class="box">
+                            <h4 class="block-title">Articles <span class="la la-file"></span></h4>
+                            <div class="title-border"></div>
+                            <div class="seg">
+                                <button class="seg-button"><span class="la la-file"></span></button>
+                                <div class="seg-body">
+                                    <h5 class="seg-heading">2000</h5>
+                                    <p><a href="artpost.html">Upload <span class="la la-upload"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box">
+                            <h4 class="block-title">Podcasts <span class="la la-microphone"></span></h4>
+                            <div class="title-border"></div>
+                            <div class="seg">
+                                <button class="seg-button"><span class="la la-microphone"></span></button>
+                                <div class="seg-body">
+                                    <h5 class="seg-heading">2000</h5>
+                                    <p><a href="ytpod.html">Upload <span class="la la-upload"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box">
+                            <h4 class="block-title">Playlist <span class="la la-spotify"></span></h4>
+                            <div class="title-border"></div>
+                            <div class="seg">
+                                <button class="seg-button"><span class="la la-spotify"></span></button>
+                                <div class="seg-body">
+                                    <h5 class="seg-heading">2000</h5>
+                                    <p><a href="spotplay.html">Upload <span class="la la-upload"></span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
