@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             PodcastSeeder::class,
             ArticleCommentSeeder::class,
             PodcastCommentSeeder::class,
+            SpotifyPlaylistSeeder::class,
         ]);
     }
 }
