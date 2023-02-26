@@ -3,10 +3,12 @@
 use App\Http\Controllers\AdminArticleController;
 use App\Http\Controllers\AdminPodcastController;
 use App\Http\Controllers\CkeditorController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicArticleController;
 use App\Http\Controllers\PublicPodcastController;
+use App\Http\Controllers\SpotifyPlaylistController;
 use App\Http\Livewire\CategorisationHandler;
 use App\Models\Article;
 use App\Models\Categorisation;
@@ -34,12 +36,11 @@ Route::get('/', [HomeController::class, 'index']);
  * Routers that require user authentication
  */
 Route::middleware(['auth', 'verified'])->group(function () {
+    
     /**
      * The dashboard
      */
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     /**
      * CKEditor Image Upload
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
      */
     Route::resource('admin-article', AdminArticleController::class);
     Route::resource('admin-podcast', AdminPodcastController::class);
+    Route::resource('spotify-playlist', SpotifyPlaylistController::class);
 
     /**
      * Profile Management

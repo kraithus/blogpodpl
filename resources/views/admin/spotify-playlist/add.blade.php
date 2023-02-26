@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Upload Spotify Playlist</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fa/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/la/css/line-awesome.min.css') }}">
@@ -19,7 +19,7 @@
 <body>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name | {{ Auth::user()->name }}</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed ml-5" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -30,28 +30,29 @@
             </div>
         </div>
     </header>
+
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="dashboard.html">
+                            <a class="nav-link" aria-current="page" href="dashboard.html">
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin-article/create">
+                            <a class="nav-link" href="artpost.html">
                                 Article
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin-podcast/create">
+                            <a class="nav-link" href="ytpod.html">
                                 Youtube Podcast
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="spotplay.html">
+                            <a class="nav-link active" href="spotplay.html">
                                 Spotify Playlist
                             </a>
                         </li>
@@ -66,12 +67,12 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin-article">
+                            <a class="nav-link" href="#">
                                 Uploaded Articles
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin-podcast">
+                            <a class="nav-link" href="#">
                                 Uploaded Podcasts
                             </a>
                         </li>
@@ -85,62 +86,34 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="row">
-                    <div class="col-md-12 mt-5">
+                <div class="row mt-4">
+                    <div class="col-md-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><span class="la la-home"></span> Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Overview</li>
+                                <li class="breadcrumb-item"><a href="/dashboard"><span class="la la-home"></span>
+                                        Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Post Playlist</li>
                             </ol>
                         </nav>
                     </div>
-
-                    @if(session()->has('message'))
-                    <div class="col-md-12">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session()->get('message') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                    </div>
-                    @endif  
-                    
-                    <div class="col-md-4">
-                        <div class="box">
-                            <h4 class="block-title">Articles <span class="la la-file"></span></h4>
+                    <div class="col-md-8">
+                        <div class="box" data-aos="fade-up">
+                            <h4 class="block-title">Spotify Playlist <span class="la la-spotify"></span></h4>
                             <div class="title-border"></div>
-                            <div class="seg">
-                                <button class="seg-button"><span class="la la-file"></span></button>
-                                <div class="seg-body">
-                                    <h5 class="seg-heading">{{ $article_count }}</h5>
-                                    <p><a href="/admin-article/create">Upload <span class="la la-upload"></span></a></p>
+                            <form action="/spotify-playlist" method="POST" class="row">
+                                @csrf
+                                <div class="col-md-12 mb-4">
+                                    <label class="mb-2" for="post_title">Playlsit ID:</label>
+                                    <input type="text" class="form-control dash_form" name="playlist_id">
                                 </div>
-                            </div>
+                                <button class="artup_btn" type="submit">Upload Playlist <span class="la la-upload"></span></button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="box">
-                            <h4 class="block-title">Podcasts <span class="la la-microphone"></span></h4>
+                        <div class="box" data-aos="fade-up">
+                            <h4 class="block-title">Quick Info <span class="la la-info"></span></h4>
                             <div class="title-border"></div>
-                            <div class="seg">
-                                <button class="seg-button"><span class="la la-microphone"></span></button>
-                                <div class="seg-body">
-                                    <h5 class="seg-heading">{{ $podcast_count }}</h5>
-                                    <p><a href="/admin-podcast/create">Upload <span class="la la-upload"></span></a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box">
-                            <h4 class="block-title">Playlist <span class="la la-spotify"></span></h4>
-                            <div class="title-border"></div>
-                            <div class="seg">
-                                <button class="seg-button"><span class="la la-spotify"></span></button>
-                                <div class="seg-body">
-                                    <h5 class="seg-heading">{{ $playlist_count }}</h5>
-                                    <p><a href="/spotify-playlist/create">Upload <span class="la la-upload"></span></a></p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
