@@ -36,7 +36,8 @@ class ArticleSearch extends Component
     public function render()
     {
         return view('livewire.admin.article-search', [
-            'articles' => Article::where('title', 'like', '%'.$this->searchTitle.'%')
+            'articles' => Article::latest()
+                                ->where('title', 'like', '%'.$this->searchTitle.'%')
                                 ->where('categorisation_id', 'like', '%'.$this->searchCategorisationId.'%')
                                 ->whereBetween('created_at', [$this->dateFrom . ' 00:00', $this->dateTo . ' 23:59'])
                                 ->paginate(3),
