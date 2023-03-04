@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ArticleVisitLogger\ArticleVisitLoggerFacade;
 use App\Models\Article;
 use App\Models\ArticleComment;
 use App\Models\Categorisation;
@@ -27,7 +28,11 @@ class PublicArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
-    {
+    {   
+        //log the visit [refer to Middleware/LogArticleVisit]
+        $uniqueUserId = request()->cookie('unique_id');
+        ArticleVisitLoggerFacade::log($slug, $uniqueUserId);
+
         $article = Article::where('slug', $slug)->withCount('comments')->firstOrFail();
         $categorisation_id = $article->categorisation_id;
         $similarArticles = Article::similararticles($slug, $categorisation_id)->withCount('comments')->get();
@@ -38,5 +43,6 @@ class PublicArticleController extends Controller
         ];
 
         return view('public.article.show', $data);
+
     }
 }

@@ -27,22 +27,6 @@ class Article extends Model
     ];
     
     /**
-     * Article was uploaded by a user
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    /**
-     * Article was written by...
-     */
-    public function writer()
-    {
-        return $this->belongsTo(Writer::class);
-    }
-
-    /**
      * Article corresponds to a categorisation
      */
     public function categorisation()
@@ -70,5 +54,29 @@ class Article extends Model
     public function scopeSimilarArticles($query, $slug, $categorisation_id)
     {
         return $query->latest()->where('categorisation_id', $categorisation_id)->whereNot('slug', $slug)->limit(3);
+    }    
+
+    /**
+     * Article was uploaded by a user
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    /**
+     * Article has many visits
+     */
+    public function visits()
+    {
+        return $this->hasMany(ArticleVisit::class);
+    }
+
+    /**
+     * Article was written by...
+     */
+    public function writer()
+    {
+        return $this->belongsTo(Writer::class);
     }
 }
