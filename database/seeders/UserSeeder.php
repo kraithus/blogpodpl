@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::factory()
         # Default Admin
         ->create([
-            'name' => 'Tendai Malata',
+            'name' => 'Admin',
             'email' => 'fakeadmin@gmail.com',
             'role_id' => 1, //corresponds to Admin role
             'password' => '$2y$10$8h53Xk0Q3NaGbKrGE24MRepuoN8MY3Mpr6SX4x0a94lfpc/TFKHK6' //password is bluefish
