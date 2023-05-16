@@ -8,6 +8,9 @@ body {
     font-size: 14px;
 }
 .pallete{
+    color: #5B1FCB;
+    color: #D8EBF4;
+    color: #2F85A3;
     color: #3D3D3D;
     color: #DAAC69;
     color: #7C695C;
@@ -803,47 +806,75 @@ textarea.comm_text:focus{
 
 
 
-.company-block {
-    text-align: center;
-}
-.company-details {
-    text-align: center;
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-.company-slogan {
-    text-align: center;
-    margin-bottom: 30px;
-}
-.footer-social {
-    text-align: center;
-}
-ul.footer-social{
-    padding: 0;
-    margin: 0;
-}
-.footer-social li{
-    display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 30px;
-    font-size: 20px;
-}
-.footer-social li a {
+.footer-section {
+    background-color: #000;
     color: #FFFFFF;
+    padding-top: 50px;
+
 }
-.footer-links {
-    text-align: center;
+
+.first_row {
+    border-bottom: 1px solid #D9D3CB;
+    margin-bottom: 30px;
 }
-ul.footer-list{
+
+.company-block {
+}
+
+.company-details {
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.company-slogan {
+    margin-bottom: 20px;
+}
+
+.footer-social {
+}
+
+ul.footer-social {
     padding: 0;
     margin: 0;
 }
-.footer-list li{
-    display: block;
+
+.footer-social li {
+    display: inline-block;
+    margin-right: 10px;
     margin-bottom: 30px;
+    font-size: 20px;
+    background-color: #FFF;
+    border-radius: 3px;
+    width: 30px;
+    padding-left: 5px;
+
 }
+
+.footer-social li a {
+    color: #000;
+}
+
+.footer-links {
+}
+
+ul.footer-list {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    display: block;
+    margin-bottom: 20px;
+}
+
 .footer-list li a {
     color: #FFFFFF;
     text-decoration: none;
+}
+.copyright a{
+    color: #DAAC69;
+}
+.copyright a:hover{
+    color: #DAAC69;
 }

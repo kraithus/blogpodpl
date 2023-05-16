@@ -66,27 +66,30 @@ require __DIR__.'/auth.php';
 /**
  * Fetch article or podcast or category by slug
  */
-Route::get('/{slug}', function($slug) {
-    $article = Article::where('slug', $slug)->first();
 
-    if ($article) {
-        return (new PublicArticleController)->show($slug);
-    }
+Route::middleware(['log.article.visit'])->group(function () {
+    Route::get('/{slug}', function($slug) {
+        $article = Article::where('slug', $slug)->first();
 
-    $podcast = Podcast::where('slug', $slug)->first();
+        if ($article) {
+            return (new PublicArticleController)->show($slug);
+        }
 
-    if ($podcast) {
-        return (new PublicPodcastController)->show($slug);
-    }
+        $podcast = Podcast::where('slug', $slug)->first();
 
-    $categorisation = Categorisation::where('slug', $slug)->firstOrFail();
+        if ($podcast) {
+            return (new PublicPodcastController)->show($slug);
+        }
 
-    if($categorisation) {
-        return view('public.categorisation.show', [
-            'categorisation' => $categorisation,
-            'slug' => $slug
-        ]);
-    }
-});
+        $categorisation = Categorisation::where('slug', $slug)->firstOrFail();
+
+        if($categorisation) {
+            return view('public.categorisation.show', [
+                'categorisation' => $categorisation,
+                'slug' => $slug
+            ]);
+        }
+    });
+});    
 
 
