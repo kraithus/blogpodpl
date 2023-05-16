@@ -22,7 +22,7 @@
 
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">10 May.</a>
+            <a class="navbar-brand" href="#">BlogPodPlay</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample">
                 <span class="la la-bars"></span>
@@ -176,11 +176,11 @@
     </div>
 
 
-    <footer class="footer-section" data-oas="fade-up">
+    <footer class="footer-section">
         <div class="container">
-            <div class="row">
-                <div class="col-3 company-block">
-                    <h4 class="company-details">10May.</h4>
+            <div class="row first_row">
+                <div class="col-lg-6 col-12 company-block">
+                    <h4 class="company-details">BlogPodPlay</h4>
                     <p class="company-slogan">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi quo laboriosam odit pariatur.
                         Amet tenetur blanditiis excepturi necessitatibus magnam dolore error dicta,
@@ -189,16 +189,38 @@
                         <li><a href=""><span class="la la-facebook"></span></a></li>
                         <li><a href=""><span class="la la-twitter"></span></a></li>
                         <li><a href=""><span class="la la-instagram"></span></a></li>
-                        <li><a href=""><span class="la la-telegram"></span></a></li>
+                        <li><a href=""><span class="la la-spotify"></span></a></li>
+                        <li><a href=""><span class="la la-youtube"></span></a></li>
                     </ul>
                 </div>
-                <div class="col-9 footer-links">
+                <div class="col-lg-3 col-6 footer-links">
+                    <h4 class="block-title">Our Services <span class="la la-hand-holding"></span></h4>
+                    <div class="title-border"></div>
                     <ul class="footer-list">
-                        <li><a href=""><span class="la la-angle-double-right"></span> Home</a></li>
-                        <li><a href=""><span class="la la-angle-double-right"></span> Artists</a></li>
-                        <li><a href=""><span class="la la-angle-double-right"></span> Genre</a></li>
-                        <li><a href=""><span class="la la-angle-double-right"></span> Chart</a></li>
+                        <li><a href="">Our Work</a></li>
+                        <li><a href="">Pricing</a></li>
+                        <li><a href="">Partnership</a></li>
                     </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h4 class="block-title">Company <span class="la la-briefcase"></span></h4>
+                    <div class="title-border"></div>
+                    <ul class="footer-list">
+                        <li><a href="">About</a></li>
+                        <li><a href="">Terms</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p id="copyright" class="copyright">
+                        &copy; Company Name  <span id="currentYear"></span>. <br> 
+                        Designed by <a href="https://www/wa.me/265993996717" class="text-decoration-none">Gabriel Munthali  <span class="ml-2 fa fa-cog fa-spin"></span></a>.
+                    </p>
+                </div>
+                <div class="col-md-6">
+
                 </div>
             </div>
         </div>

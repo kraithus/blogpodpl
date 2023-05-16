@@ -23,7 +23,7 @@
 
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">10 May.</a>
+            <a class="navbar-brand" href="#">BlogPodPlay</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample">
                 <span class="la la-bars"></span>
@@ -150,7 +150,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-3 company-block">
-                    <h4 class="company-details">10May.</h4>
+                    <h4 class="company-details">BlogPodPlay.</h4>
                     <p class="company-slogan">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi quo laboriosam odit pariatur.
                         Amet tenetur blanditiis excepturi necessitatibus magnam dolore error dicta,
