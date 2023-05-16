@@ -29,8 +29,13 @@ class PublicArticleController extends Controller
      */
     public function show($slug)
     {   
-        //log the visit [refer to Middleware/LogArticleVisit]
+        // Check if the cookie exists, refresh page and give
+        // shitty middleware a chance to make the cookie
         $uniqueUserId = request()->cookie('unique_id');
+        if(!$uniqueUserId) {
+            return redirect()->refresh();
+        }
+        // log the visit [refer to Middleware/LogArticleVisit]
         ArticleVisitLoggerFacade::log($slug, $uniqueUserId);
 
         $article = Article::where('slug', $slug)->withCount('comments')->firstOrFail();
