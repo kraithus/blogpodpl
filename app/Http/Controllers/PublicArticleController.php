@@ -17,8 +17,7 @@ class PublicArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-
+    {
     }
 
     /**
@@ -28,11 +27,11 @@ class PublicArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
-    {   
+    {
         // Check if the cookie exists, refresh page and give
         // shitty middleware a chance to make the cookie
         $uniqueUserId = request()->cookie('unique_id');
-        if(!$uniqueUserId) {
+        if (!$uniqueUserId) {
             return redirect()->refresh();
         }
         // log the visit [refer to Middleware/LogArticleVisit]
@@ -48,6 +47,5 @@ class PublicArticleController extends Controller
         ];
 
         return view('public.article.show', $data);
-
     }
 }

@@ -6,7 +6,9 @@ use App\Models\ArticleComment;
 use Livewire\Component;
 
 class ArticleCommentsHandler extends Component
-{   
+{
+
+   
     public $article; // so I can get the $article->id from the collection the controller passed to the view
     public $articleCommentSave; // save info of author and their comment
     public $commentsLoaded;
@@ -14,33 +16,32 @@ class ArticleCommentsHandler extends Component
     public $newComment;
     public $comments;
     public $comments_count; // passed from view
-    public $loadMoreStatus = FALSE;
+    public $loadMoreStatus = false;
     public $merge;
     public $skip = 0;
     public $take = 3; // so that I can access this value in functions mount and loadMore w/o having to redeclare it
     public $userComment;
 
     public function mount()
-    {   
-        if ($this->comments_count > $this->take)
-        {
-            $this->loadMoreStatus = TRUE;
+    {
+        if ($this->comments_count > $this->take) {
+            $this->loadMoreStatus = true;
         }
 
-        $this->comments = ArticleComment::where('article_id', $this->article->id)->take($this->take)->get(); 
+        $this->comments = ArticleComment::where('article_id', $this->article->id)->take($this->take)->get();
         // if not using function get(), returns collection and not array and livewire refutes that
     }
 
     /**
      * Store a newly created resource in storage.
-     */  
+     */
     public function addComment()
     {
         $this->articleCommentSave = new ArticleComment([
             'article_id' => $this->article->id,
             'author' => $this->author,
             'body' => $this->newComment
-        ]); 
+        ]);
 
         $this->articleCommentSave->save();
 
@@ -54,14 +55,13 @@ class ArticleCommentsHandler extends Component
         $this->comments_count = ArticleComment::where('article_id', $this->article->id)->count();
 
         // if this is the first comment on the post then update value of object comments
-        if ($this->comments_count === 1)
-        {
+        if ($this->comments_count === 1) {
             $this->comments = ArticleComment::where('article_id', $this->article->id)->get();
         }
     }
     
     public function loadMore()
-    {   
+    {
         /**
          * TLDR, skip is initially 0 so that when we add value of what has been taken we skip just what has already been taken
          * If comments an article has exceed the number($this->take) that can be loaded in view
@@ -73,11 +73,10 @@ class ArticleCommentsHandler extends Component
         $this->skip += $this->take;
 
         $this->commentsLoaded = $this->skip + $this->take;
-        if ($this->commentsLoaded < $this->comments_count)
-        {
-            $this->loadMoreStatus = TRUE;
+        if ($this->commentsLoaded < $this->comments_count) {
+            $this->loadMoreStatus = true;
         } else {
-            $this->loadMoreStatus = FALSE;
+            $this->loadMoreStatus = false;
         }
 
         $nextSet = ArticleComment::where('article_id', $this->article->id)->skip($this->skip)->take($this->take)->get();

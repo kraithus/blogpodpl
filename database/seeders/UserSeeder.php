@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'name' => 'Xord Kraithus',
             'email' => 'fakeeditor@gmail.com',
             'role_id' => 2, //corresponds to Editor role
-            'password' => '$2y$10$8h53Xk0Q3NaGbKrGE24MRepuoN8MY3Mpr6SX4x0a94lfpc/TFKHK6' //password is bluefish    
+            'password' => '$2y$10$8h53Xk0Q3NaGbKrGE24MRepuoN8MY3Mpr6SX4x0a94lfpc/TFKHK6' //password is bluefish
         ]);
     }
 }

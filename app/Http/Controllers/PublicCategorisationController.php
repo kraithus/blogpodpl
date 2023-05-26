@@ -14,7 +14,7 @@ class PublicCategorisationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
-    {   
+    {
         $categorisation = Categorisation::where('slug', $slug)->firstOrFail(); //firstOrFail important, fetches just one instance, not a collection
 
         $data = [

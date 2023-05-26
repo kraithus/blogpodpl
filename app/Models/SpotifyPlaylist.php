@@ -18,5 +18,3 @@ class SpotifyPlaylist extends Model
         'playlist_id',
     ];
 }
-
-

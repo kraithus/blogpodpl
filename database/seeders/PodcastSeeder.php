@@ -56,7 +56,7 @@ class PodcastSeeder extends Seeder
             'Verien Chakufa'
         ];
 
-        for($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             Podcast::factory()->create([
                 'title' => $titles[$i],
                 'slug' => Str::slug($titles[$i], '-'),

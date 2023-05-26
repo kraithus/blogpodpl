@@ -13,7 +13,7 @@ class ArticleVisitLoggerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('articlevisitlogger', function(){
+        $this->app->bind('articlevisitlogger', function () {
             return new \App\ArticleVisitLogger\ArticleVisitLogger();
         });
     }

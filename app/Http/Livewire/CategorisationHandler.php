@@ -8,7 +8,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 class CategorisationHandler extends Component
-{   
+{
+
+   
     use WithPagination;
 
     public $categorisation;
