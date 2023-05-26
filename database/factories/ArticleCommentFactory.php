@@ -17,7 +17,7 @@ class ArticleCommentFactory extends Factory
     public function definition()
     {
         return [
-            'article_id' => random_int(3,5), // the article range to randomly create comments for
+            'article_id' => random_int(3, 5), // the article range to randomly create comments for
             'author' => fake()->name(),
             'body' => fake()->words($num = 12, $asText = true),
             'created_at' => fake()->dateTimeBetween('-1 days', 'now')->format('Y-m-d H:i:s'),

@@ -25,7 +25,7 @@ class AdminPodcastController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $categorisations = Categorisation::all()->sortBy('name');
 
         $data = [

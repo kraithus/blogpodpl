@@ -15,10 +15,11 @@ class LogArticleVisit
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {   
-        if(!$request->cookie('unique_id')) {
+    {
+        $minutes = 1; // 24 hours * 60 minutes
+        if (!$request->cookie('unique_id')) {
             $uniqueId = uniqid(); // generate unique identifier using php function
-            return $next($request)->cookie('unique_id', $uniqueId, 2); // cookie_name, value, time
+            return $next($request)->cookie('unique_id', $uniqueId, $minutes); // cookie_name, value, time
         }
         
         return $next($request);

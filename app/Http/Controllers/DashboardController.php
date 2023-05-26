@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index()
-    {   
+    {
         $data = [
             'article_count' => Article::count(),
             'podcast_count' => Podcast::count(),

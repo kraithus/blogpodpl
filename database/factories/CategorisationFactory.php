@@ -15,7 +15,7 @@ class CategorisationFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition()
-    {   
+    {
         return [
             'created_by' => 1,
             'updated_by' => 1,

@@ -129,7 +129,7 @@ class AdminArticleController extends Controller
         $data = [
             'article' => $article,
             'categorisations' => $categorisations,
-            'title' => $pageTitle, 
+            'title' => $pageTitle,
             'writers' => $writers,
         ];
 

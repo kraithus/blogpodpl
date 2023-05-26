@@ -8,7 +8,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 class ArticleSearch extends Component
-{   
+{
+
+   
     use WithPagination;
 
     public $categorisations;
@@ -26,7 +28,7 @@ class ArticleSearch extends Component
     public function mount()
     {
         $this->categorisations = Categorisation::all()->sortBy('name');
-    }    
+    }
 
     public function updating()
     {

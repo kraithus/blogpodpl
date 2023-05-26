@@ -13,15 +13,13 @@ class ArticleVisitLogger
 
         $articleId = $article->id;
 
-        if(ArticleVisit::where('article_id', $articleId)->where('unique_user_id', $uniqueUserId)->doesntExist())
-        {
+        if (ArticleVisit::where('article_id', $articleId)->where('unique_user_id', $uniqueUserId)->doesntExist()) {
             $articleVisit = new ArticleVisit();
 
             $articleVisit->article_id = $articleId;
             $articleVisit->unique_user_id = $uniqueUserId;
 
             $articleVisit->save();
-        }        
-
+        }
     }
 }

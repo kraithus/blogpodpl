@@ -68,7 +68,7 @@ require __DIR__.'/auth.php';
  */
 
 Route::middleware(['log.article.visit'])->group(function () {
-    Route::get('/{slug}', function($slug) {
+    Route::get('/{slug}', function ($slug) {
         $article = Article::where('slug', $slug)->first();
 
         if ($article) {
@@ -83,13 +83,11 @@ Route::middleware(['log.article.visit'])->group(function () {
 
         $categorisation = Categorisation::where('slug', $slug)->firstOrFail();
 
-        if($categorisation) {
+        if ($categorisation) {
             return view('public.categorisation.show', [
                 'categorisation' => $categorisation,
                 'slug' => $slug
             ]);
         }
     });
-});    
-
-
+});

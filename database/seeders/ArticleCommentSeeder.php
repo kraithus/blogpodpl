@@ -14,7 +14,7 @@ class ArticleCommentSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {
         ArticleComment::factory(13)->create();
     }
 }

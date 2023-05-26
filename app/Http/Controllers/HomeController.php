@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index()
-    {   
+    {
         $pageTitle = 'Home';
         $carouselArticles = Article::latest()->skip(0)->take(3)->withCount('comments')->get();
         $nextLatestArticles = Article::latest()->skip(0)->take(2)->withCount('comments')->get();

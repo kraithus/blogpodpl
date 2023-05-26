@@ -45,7 +45,7 @@ class Article extends Model
     /**
      * Scope a query to get 3 most recent articles with the same
      * category as the article being viewed
-     * 
+     *
      * @param \Illuminate\Database\Eloquent\Builder  $query
      * @param string $slug
      * @param int $categorisation_id
@@ -54,7 +54,7 @@ class Article extends Model
     public function scopeSimilarArticles($query, $slug, $categorisation_id)
     {
         return $query->latest()->where('categorisation_id', $categorisation_id)->whereNot('slug', $slug)->limit(3);
-    }    
+    }
 
     /**
      * Article was uploaded by a user
